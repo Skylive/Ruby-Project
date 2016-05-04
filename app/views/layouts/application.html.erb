@@ -1,14 +1,30 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>OnlineLibrary</title>
+  <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag     'application',  media: 'all',
+                                              'data-turbolinks-track' => true %>
+  <%= javascript_include_tag  'application',  'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+
+  <%= render 'layouts/shim' %>
+  
 </head>
 <body>
+  
+  <%= render 'layouts/header' %>
 
-<%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
+  
+  <%= render 'layouts/footer' %>
 
 </body>
 </html>
