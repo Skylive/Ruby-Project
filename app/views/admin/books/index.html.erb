@@ -1,0 +1,49 @@
+<h1>Listing Books</h1>
+<table id="race" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Isbn</th>
+      <th>Description</th>
+      <th>Author</th>
+      <th>Image</th>
+      <th>Member</th>
+      <th>Due date</th>
+      <th>Max due date</th>
+      <th>Last member</th>
+      <th>Returned date</th>
+      <th>Isactivebook</th>
+      <th>Reason</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.id %></td>
+        <td><%= book.title %></td>
+        <td><%= book.isbn %></td>
+        <td><%= book.description %></td>
+        <td><%= book.author %></td>
+        <td><%= book.image %></td>
+        <td><%= book.member_id %></td>
+        <td><%= book.end_date %></td>
+        <td><%= book.max_end_date %></td>
+        <td><%= book.last_member_id %></td>
+        <td><%= book.last_loan_date %></td>
+        <% if book.isactivebook %>
+          <td><p>Active</p></td>
+          <td><p>/</p></td>
+        <% else %>
+          <td><p>Inactive</p></td>
+          <td><%= book.reason %></td>
+        <% end %>
+        <td><%= link_to 'Show', admin_book_path(book) %></td>
+        <td><%= link_to 'Edit', edit_admin_book_path(book) %></td>
+        <td><%= link_to 'Destroy', admin_book_path(book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Book', new_admin_book_path %>

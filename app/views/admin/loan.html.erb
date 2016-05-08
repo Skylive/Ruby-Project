@@ -1,0 +1,20 @@
+<h1>Admin#loan</h1>
+
+<h2>Loan a book</h2>
+<%= form_tag({controller: "admin", action: "assign"}, method: "post") do %>
+  <%= label_tag(:book, "Select a book:") %>
+  <%= collection_select(:book, :id, Book.all.where("isactivebook = ? AND member_id = ?", true, 0), :id, :title, {prompt: 'Select Book'}) %>
+  <%= label_tag(:member, "Select a member:") %>
+  <%= collection_select(:member, :id, Member.all.where("isactivemember = ?", true), :id, "full_name", {disabled: lambda{|member| member.isactivemember == 0 }}) %>
+  <%= submit_tag("Loan") %>
+<% end %>
+
+<h2>Return a book</h2>
+
+<%= form_tag({controller: "admin", action: "returned"}, method: "post") do %>
+  <%= label_tag(:book, "Select a book:") %>
+  <%= collection_select(:book, :id, Book.all.where("isactivebook = ? AND member_id > ?", true, 0), :id, :title, {disabled: lambda{|book| book.isactivebook == 0 || book.member_id == 0 }}) %>
+  <%= submit_tag("Mark available") %>
+<% end %>
+
+<p>Find me in app/views/admin/loan.html.erb</p>

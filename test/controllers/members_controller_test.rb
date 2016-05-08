@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MembersControllerTest < ActionController::TestCase
+class AdminControllerTest::MembersControllerTest < ActionController::TestCase
   setup do
     @member = members(:one)
   end
@@ -18,7 +18,7 @@ class MembersControllerTest < ActionController::TestCase
 
   test "should create member" do
     assert_difference('Member.count') do
-      post :create, member: { address1: @member.address1, address2: @member.address2, firstname: @member.firstname, isactivemember: @member.isactivemember, lastname: @member.lastname, phoneno: @member.phoneno }
+      post :create, member: { address1: @member.address1, address2: @member.address2, firstname: @member.firstname, isactivemember: @member.isactivemember, lastname: @member.lastname, login: @member.login, password: @member.password, phoneno: @member.phoneno }
     end
 
     assert_redirected_to member_path(assigns(:member))
@@ -35,7 +35,7 @@ class MembersControllerTest < ActionController::TestCase
   end
 
   test "should update member" do
-    patch :update, id: @member, member: { address1: @member.address1, address2: @member.address2, firstname: @member.firstname, isactivemember: @member.isactivemember, lastname: @member.lastname, phoneno: @member.phoneno }
+    patch :update, id: @member, member: { address1: @member.address1, address2: @member.address2, firstname: @member.firstname, isactivemember: @member.isactivemember, lastname: @member.lastname, login: @member.login, password: @member.password, phoneno: @member.phoneno }
     assert_redirected_to member_path(assigns(:member))
   end
 

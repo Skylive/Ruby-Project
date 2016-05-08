@@ -11,17 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505001531) do
+ActiveRecord::Schema.define(version: 20160508221541) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string   "login"
+    t.string   "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "isbn"
+    t.text     "description"
+    t.string   "author"
+    t.string   "image"
+    t.integer  "member_id"
+    t.datetime "end_date"
+    t.datetime "max_end_date"
+    t.integer  "last_member_id"
+    t.datetime "last_loan_date"
+    t.boolean  "isactivebook"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "reason"
+  end
 
   create_table "members", force: :cascade do |t|
+    t.string   "login"
+    t.string   "password"
     t.string   "firstname"
     t.string   "lastname"
     t.string   "address1"
     t.string   "address2"
     t.string   "phoneno"
     t.boolean  "isactivemember"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
+    t.boolean  "isadmin"
   end
 
 end

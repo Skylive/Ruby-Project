@@ -1,16 +1,42 @@
 <% provide(:title, "Home") %>
 
-<div class="center jumbotron">
-    <h1>Welcome to the Sample App</h1>
-    
-    <h2>
-        This is the home page for the
-        <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-        sample application
-    </h2>
+<h1>Listing Books</h1>
 
-    <%= link_to "Sign up now!", "#", class: "btn btn-lg btn-primary" %>
-</div>
-
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
+<table id="books" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Title</th>
+      <th>ISBN</th>
+      <th>Description</th>
+      <th>Author</th>
+      <th>Status</th>
+      <th>Available on</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.where(:isactivebook => true).each do |book| %>
+      <tr>
+        <td><%= book.id %></td>
+        <td><%= book.image %></td>
+        <td><%= book.title %></td>
+        <td><%= book.isbn %></td>
+        <td><%= book.description %></td>
+        <td><%= book.author %></td>
+        <% if book.isactivebook %>
+          <% if book.member_id != 0 %>
+            <td><p>OnLoan</p></td>
+            <td><%= book.end_date %></td>
+          <% else %>
+            <td><p>Available</p></td>
+            <td>NOW</td>
+          <% end %>
+        <% else %>
+          <td><p>Unavailable</p></td>
+          <td>--:--:-- --:--:--</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

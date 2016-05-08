@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  isbn: 1
+  description: MyText
+  author: MyString
+  image: MyString
+  member_id: 1
+  end_date: 1
+  max_end_date: 1
+  last_member_id: 1
+  last_loan_date: 2016-05-07 03:03:35
+  isactivebook: 1
+
+two:
+  title: MyString
+  isbn: 1
+  description: MyText
+  author: MyString
+  image: MyString
+  member_id: 1
+  end_date: 1
+  max_end_date: 1
+  last_member_id: 1
+  last_loan_date: 2016-05-07 03:03:35
+  isactivebook: 1

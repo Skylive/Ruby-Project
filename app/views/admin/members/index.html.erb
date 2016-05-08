@@ -1,0 +1,49 @@
+<h1>Listing Members</h1>
+<table id="members" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Login</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Address1</th>
+      <th>Address2</th>
+      <th>Phone No</th>
+      <th>Status</th>
+      <th>IsAdmin</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.id %></td>
+        <td><%= member.login %></td>
+        <td><%= member.firstname %></td>
+        <td><%= member.lastname %></td>
+        <td><%= member.address1 %></td>
+        <td><%= member.address2 %></td>
+        <td><%= member.phoneno %></td>
+        <td>
+          <% if member.isactivemember != 0 %>
+            <p>Active</p>
+          <% else %>
+            <p>Inactive</p>
+          <% end %>
+        </td>
+        <td>
+          <% if member.isadmin %>
+            <p>Yes</p>
+          <% else %>
+            <p>No</p>
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', admin_member_path(member) %></td>
+        <td><%= link_to 'Edit', edit_admin_member_path(member) %></td>
+        <td><%= link_to 'Destroy', admin_member_path(member), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Member', new_admin_member_path %>

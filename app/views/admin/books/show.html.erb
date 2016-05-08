@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @book.isbn %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @book.description %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @book.image %>
+</p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @book.member_id %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @book.end_date %>
+</p>
+
+<p>
+  <strong>Max end date:</strong>
+  <%= @book.max_end_date %>
+</p>
+
+<p>
+  <strong>Last member:</strong>
+  <%= @book.last_member_id %>
+</p>
+
+<p>
+  <strong>Last loan date:</strong>
+  <%= @book.last_loan_date %>
+</p>
+
+<p>
+  <strong>Isactivebook:</strong>
+  <%= @book.isactivebook %>
+</p>
+
+<%= link_to 'Edit', edit_admin_book_path(@book) %> |
+<%= link_to 'Back', admin_books_path %>

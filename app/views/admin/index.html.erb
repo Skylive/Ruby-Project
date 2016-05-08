@@ -1,0 +1,30 @@
+<!--
+<pre>
+  <%= current_member.inspect %>
+</pre>
+-->
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="jumbotron">
+            <h3>Loan a book</h3>
+            <%= form_tag({controller: "admin", action: "assign"}, method: "post") do %>
+                <%= label_tag(:book, "Select a book:") %>
+                <%= collection_select(:book, :id, Book.all.where("isactivebook = ? AND member_id = ?", true, 0), :id, :title) %>
+                <%= label_tag(:member, "Select a member:") %>
+                <%= collection_select(:member, :id, Member.all.where("isactivemember = ?", true), :id, "full_name") %>
+                <%= submit_tag("Loan", class: 'btn btn-primary') %>
+            <% end %>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="jumbotron">
+            <h3>Return a book</h3>
+            <%= form_tag({controller: "admin", action: "returned"}, method: "post") do %>
+                <%= label_tag(:book, "Select a book:") %>
+                <%= collection_select(:book, :id, Book.all.where("isactivebook = ? AND member_id > ?", true, 0), :id, :title) %>
+                <%= submit_tag("Mark available", class: 'btn btn-primary') %>
+            <% end %>
+        </div>
+    </div>
+</div>
