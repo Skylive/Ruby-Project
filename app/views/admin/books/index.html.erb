@@ -8,10 +8,10 @@
       <th>Description</th>
       <th>Author</th>
       <th>Image</th>
-      <th>Member</th>
+      <th>Member ID</th>
       <th>Due date</th>
       <th>Max due date</th>
-      <th>Last member</th>
+      <th>Last member ID</th>
       <th>Returned date</th>
       <th>Isactivebook</th>
       <th>Reason</th>
@@ -26,7 +26,7 @@
         <td><%= book.isbn %></td>
         <td><%= book.description %></td>
         <td><%= book.author %></td>
-        <td><%= book.image %></td>
+        <td class="book_image"><%= image_tag(book.image, alt: "rails logo") %></td>
         <td><%= book.member_id %></td>
         <td><%= book.end_date %></td>
         <td><%= book.max_end_date %></td>

@@ -19,7 +19,7 @@
     <% @books.where(:isactivebook => true).each do |book| %>
       <tr>
         <td><%= book.id %></td>
-        <td><%= book.image %></td>
+        <td class="book_image"><%= image_tag(book.image, alt: "rails logo") %></td>
         <td><%= book.title %></td>
         <td><%= book.isbn %></td>
         <td><%= book.description %></td>
